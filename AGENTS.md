@@ -6,7 +6,7 @@ The client walks, hashes, and uploads. It does not parse, embed, run SQL, or dec
 
 ## Vision repository
 
-Product vision, architecture, decisions, and brand assets live in the private repository `contextdrive/vision`, on branch `main`. Read `PRODUCT_VISION.md` and `ARCHITECTURE.md` there before designing or implementing. Server contracts this client calls are the issue bodies in `contextdrive/server` (`#8` presign, `#17` manifest and job status, `#3` JWT). If a note in this repository disagrees with the vision repository, the vision repository wins.
+Product vision, architecture, and decisions live in the private repository `contextdrive/vision`, on branch `main`. Read `PRODUCT_VISION.md` and `ARCHITECTURE.md` there before designing or implementing. This repository does not keep a product vision. Do not add one. Server contracts this client calls are the issue bodies in `contextdrive/server` (`#8` presign, `#17` manifest and job status, `#3` JWT). If a note in this repository disagrees with the vision repository, the vision repository wins.
 
 Reach `contextdrive/vision` in this order:
 
