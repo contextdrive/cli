@@ -1,8 +1,14 @@
-# cli
+# ctx
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+Command-line client for ContextDrive ([contextdrive.io](https://contextdrive.io)). Quarkus Picocli, built as a GraalVM native image.
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+`ctx` is a thin client. `ctx login` stores a credential. `ctx ingest` walks a local tree, hashes it, uploads parts to the namespace’s storage binding, and posts a manifest to the origin. `ctx status` reads the job. Parsing, embeddings, SQL, and policy stay in `contextdrive/server`.
+
+Product vision: private repo `contextdrive/vision` on `main`. How to read it, and the command boundaries, are in [AGENTS.md](AGENTS.md).
+
+What `main` runs today is the Quarkus Picocli sample (`GreetingCommand`). The three commands above are the open issues.
+
+This project uses Quarkus. See <https://quarkus.io/>.
 
 ## Running the application in dev mode
 
@@ -57,18 +63,12 @@ If you want to learn more about building native executables, please consult <htt
 
 - Picocli ([guide](https://quarkus.io/guides/picocli)): Develop command line applications with Picocli
 
-## Provided Code
+## Sample on main
 
-### Picocli Example
+`GreetingCommand` is the Quarkus Picocli sample. The issues in this repo replace it with `ctx login`, `ctx ingest`, and `ctx status`.
 
-Hello and goodbye are civilization fundamentals. Let's not forget it with this example picocli application by changing the <code>command</code> and <code>parameters</code>.
+Dev mode restarts the command when you press Enter. Pass arguments with:
 
-[Related guide section...](https://quarkus.io/guides/picocli#command-line-application-with-multiple-commands)
-
-Also for picocli applications the dev mode is supported. When running dev mode, the picocli application is executed and on press of the Enter key, is restarted.
-
-As picocli applications will often require arguments to be passed on the commandline, this is also possible in dev mode via:
-
-```shell script
+```shell
 ./mvnw quarkus:dev -Dquarkus.args='Quarky'
 ```
