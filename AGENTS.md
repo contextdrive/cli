@@ -2,11 +2,11 @@
 
 This repository is `ctx`, the ContextDrive command-line client. Quarkus Picocli, shipped as a GraalVM native image. v1 commands are `ctx login`, `ctx ingest`, and `ctx status`.
 
-The client walks, hashes, and uploads. It does not parse, embed, run SQL, or decide policy. Multipart parts are transport chunks. Embedding chunks are produced by `contextdrive/server` after a manifest is posted. File bytes go to the namespace’s storage binding with presigned URLs. They are not posted to the origin as a request body.
+The client walks, hashes, and uploads. It does not parse, embed, run SQL, or decide policy. Multipart parts are transport chunks. Embedding chunks are produced by `contextdrive/server` after a manifest is posted. File bytes go to the platform prefix `/{organization_id}/{namespace_id}/` with presigned URLs the origin assigns. They are not posted to the origin as a request body. This client does not accept a customer bucket.
 
 ## Vision repository
 
-Product vision, architecture, and decisions live in the private repository `contextdrive/vision`, on branch `main`. Read `PRODUCT_VISION.md` and `ARCHITECTURE.md` there before designing or implementing. This repository does not keep a product vision. Do not add one. Server contracts this client calls are the issue bodies in `contextdrive/server` (`#8` presign, `#17` manifest and job status, `#3` JWT). If a note in this repository disagrees with the vision repository, the vision repository wins.
+Product vision, architecture, and decisions live in the private repository `contextdrive/vision`, on branch `main`. Read `PRODUCT_VISION.md` and `ARCHITECTURE.md` there before designing or implementing. This repository does not keep a product vision. Do not add one. Server contracts this client calls are the issue bodies in `contextdrive/server` (`#8` presign onto the platform prefix, `#17` manifest and job status, `#3` JWT). `#9` (customer buckets) is closed and is not a client contract. If a note in this repository disagrees with the vision repository, the vision repository wins.
 
 Reach `contextdrive/vision` in this order:
 
