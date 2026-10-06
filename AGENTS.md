@@ -1,6 +1,6 @@
 # contextdrive-cli
 
-This repository is `ctx`, the ContextDrive command-line client. v1 commands are `ctx login`, `ctx ingest`, and `ctx status`. The language is not locked. The tree on `main` is a Java sample and is not the template. If `server` changes language, this client follows.
+This repository is `ctx`, the ContextDrive command-line client. v1 commands are `ctx login`, `ctx ingest`, and `ctx status`. `ctx` is Java, a GraalVM native image, and it does not link DuckDB or Tika. The sample on `main` is not the template for login, ingest, or status.
 
 The client walks, hashes, and uploads. It does not parse, embed, run SQL, or decide policy. It asks `server` for a file row and a short-lived upload grant, writes bytes straight to R2, and commits. Embedding and parse run in `server` after the commit. This client does not accept a customer bucket.
 

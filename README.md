@@ -2,7 +2,7 @@
 
 Command-line client for ContextDrive ([contextdrive.io](https://contextdrive.io)).
 
-`ctx` is a thin client. `ctx login` stores a credential. `ctx ingest` walks a local tree, hashes it, asks `server` for a file row and an upload grant, writes the bytes to R2, and commits. `ctx status` reads the job. Parsing, embeddings, SQL, and policy stay in `contextdrive/server`. The client does not choose a bucket. The language of this client is not locked. It follows `server`.
+`ctx` is a thin client. `ctx login` stores a credential. `ctx ingest` walks a local tree, hashes it, asks `server` for a file row and an upload grant, writes the bytes to R2, and commits. `ctx status` reads the job. Parsing, embeddings, SQL, and policy stay in `contextdrive/server`. The client does not choose a bucket. `ctx` is Java, a native image, and it does not link DuckDB or Tika.
 
 Product vision: private repo `contextdrive/vision` on `main`. How to read it, and the command boundaries, are in [AGENTS.md](AGENTS.md).
 
