@@ -1,12 +1,12 @@
 # contextdrive-cli
 
-This repository is `ctx`, the ContextDrive command-line client. Quarkus Picocli, shipped as a GraalVM native image. v1 commands are `ctx login`, `ctx ingest`, and `ctx status`.
+This repository is `ctx`, the ContextDrive command-line client. v1 commands are `ctx login`, `ctx ingest`, and `ctx status`. The language is not locked. The tree on `main` is a Java sample and is not the template. If `server` changes language, this client follows.
 
-The client walks, hashes, and uploads. It does not parse, embed, run SQL, or decide policy. Multipart parts are transport chunks. Embedding chunks are produced by `contextdrive/server` after a manifest is posted. File bytes go to the platform prefix `/{organization_id}/{namespace_id}/` with presigned URLs the origin assigns. They are not posted to the origin as a request body. This client does not accept a customer bucket.
+The client walks, hashes, and uploads. It does not parse, embed, run SQL, or decide policy. It asks `server` for a file row and a short-lived upload grant, writes bytes straight to R2, and commits. Embedding and parse run in `server` after the commit. This client does not accept a customer bucket.
 
 ## Vision repository
 
-Product vision, architecture, and decisions live in the private repository `contextdrive/vision`, on branch `main`. Read `PRODUCT_VISION.md` and `ARCHITECTURE.md` there before designing or implementing. This repository does not keep a product vision. Do not add one. Server contracts this client calls are the issue bodies in `contextdrive/server` (`#8` presign onto the platform prefix, `#17` manifest and job status, `#3` JWT). `#9` (customer buckets) is closed and is not a client contract. If a note in this repository disagrees with the vision repository, the vision repository wins.
+Product vision, architecture, and decisions live in the private repository `contextdrive/vision`, on branch `main`. Read `PRODUCT_VISION.md` and `ARCHITECTURE.md` there before designing or implementing. This repository does not keep a product vision. Do not add one. The upload contract is `ARCHITECTURE.md`: a pending file row, then an upload grant for that key, then a commit. Customer-owned buckets are out. If a note in this repository disagrees with the vision repository, the vision repository wins.
 
 Reach `contextdrive/vision` in this order:
 

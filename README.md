@@ -1,8 +1,8 @@
 # ctx
 
-Command-line client for ContextDrive ([contextdrive.io](https://contextdrive.io)). Quarkus Picocli, built as a GraalVM native image.
+Command-line client for ContextDrive ([contextdrive.io](https://contextdrive.io)).
 
-`ctx` is a thin client. `ctx login` stores a credential. `ctx ingest` walks a local tree, hashes it, uploads parts to the platform prefix the origin assigns, and posts a manifest. `ctx status` reads the job. Parsing, embeddings, SQL, and policy stay in `contextdrive/server`. The client does not choose a bucket.
+`ctx` is a thin client. `ctx login` stores a credential. `ctx ingest` walks a local tree, hashes it, asks `server` for a file row and an upload grant, writes the bytes to R2, and commits. `ctx status` reads the job. Parsing, embeddings, SQL, and policy stay in `contextdrive/server`. The client does not choose a bucket. The language of this client is not locked. It follows `server`.
 
 Product vision: private repo `contextdrive/vision` on `main`. How to read it, and the command boundaries, are in [AGENTS.md](AGENTS.md).
 
