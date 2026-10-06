@@ -20,6 +20,10 @@ gh api repos/contextdrive/vision/contents/ARCHITECTURE.md?ref=main --jq .content
 
 `gh repo clone contextdrive/vision` and checking out `main` is the same remote read.
 
+## Local instructions
+
+Read `LOCAL.md` at this repository root when it exists. The file is optional and gitignored. It instructs agents about this machine only: local paths, local tools, and workflows that stay on this computer. Follow it for work in this checkout. Another checkout has its own file, or none. Create `LOCAL.md` only when asked. Leave its contents out of committed files, issues, and pull requests. Product behavior stays in `contextdrive/vision` on `main`. That repository’s `AGENTS.md` records the convention.
+
 ## Packages
 
 The sample on `main` is `io.contextdrive.GreetingCommand`. Real commands live in `io.contextdrive.cli`. Each GitHub issue in this repository is one command. Do not take on server work (storage SPI, parsers, workers, policy) in a CLI change.

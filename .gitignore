@@ -38,6 +38,8 @@ nb-configuration.xml
 
 # Local environment
 .env
+# Machine-local agent instructions. See AGENTS.md.
+LOCAL.md
 
 # Plugin directory
 /.quarkus/cli/plugins/
